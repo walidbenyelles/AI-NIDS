@@ -120,6 +120,10 @@ Then launch the dashboard:
 - Improved false positive handling
 - Real-time network traffic analysis
 
+## Dashboard Preview
+
+![AI-NIDS Interface](screenshots/interface.png)
+![AI-NIDS Security Dashboard](screenshots/dashboard.png)
 ## Author
 
 BEN-YELLES MOHAMMED WALID
