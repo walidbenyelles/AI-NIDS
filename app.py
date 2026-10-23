@@ -30,7 +30,7 @@ def charger_modele():
 # Effacer l'ancienne analyse si le fichier change
 def reinitialiser_resultats():
     st.session_state.pop("resultats", None)
-
+    st.session_state["mode_demo"] = False
 
 model, features = charger_modele()
 
@@ -84,16 +84,43 @@ fichier = st.file_uploader(
     on_change=reinitialiser_resultats
 )
 
-if fichier is not None:
+# Bouton de démonstration
+demo_click = st.button(
+    "🚀 Try Demo — 250 network flows"
+)
 
-    # Charger les données
+if demo_click:
+    st.session_state["mode_demo"] = True
+    st.session_state.pop("resultats", None)
+
+
+if fichier is not None or st.session_state.get(
+    "mode_demo", False
+):
+
     try:
-        df = pd.read_csv(
-            io.BytesIO(fichier.getvalue())
-        )
+        if st.session_state.get("mode_demo", False):
+
+            # Charger les exemples de démonstration
+            df = pd.read_csv(
+                DOSSIER / "demo" / "sample_traffic.csv"
+            )
+
+            st.info(
+                "Demo mode: analyzing 250 sample "
+                "network flows from UNSW-NB15."
+            )
+
+        else:
+            # Charger le CSV importé par l'utilisateur
+            df = pd.read_csv(
+                io.BytesIO(fichier.getvalue())
+            )
+
     except Exception as e:
-        st.error(f"Impossible de lire le CSV : {e}")
+        st.error(f"Erreur de chargement : {e}")
         st.stop()
+
 
     st.subheader("Aperçu des données")
     st.dataframe(df.head(10))
@@ -122,7 +149,7 @@ if fichier is not None:
         st.stop()
 
     # Analyser le trafic
-    if st.button("Analyser le trafic", type="primary"):
+    if st.button("Analyser le trafic", type="primary") or demo_click:
 
         index_attaque = list(model.classes_).index(1)
 
