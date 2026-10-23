@@ -124,9 +124,15 @@ Then launch the dashboard:
 
 ![AI-NIDS Interface](screenshots/interface.png)
 ![AI-NIDS Security Dashboard](screenshots/dashboard.png)
+
+### 🌐 Live Demo
+
+[🚀 Try AI-NIDS Online](https://ai-nids-walid.streamlit.app/)
+
 ## Author
 
 BEN-YELLES MOHAMMED WALID
 
 
 [![AI-NIDS Tests](https://github.com/walidbenyelles/AI-NIDS/actions/workflows/tests.yml/badge.svg)](https://github.com/walidbenyelles/AI-NIDS/actions/workflows/tests.yml)
+
