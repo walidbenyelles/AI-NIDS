@@ -127,3 +127,6 @@ Then launch the dashboard:
 ## Author
 
 BEN-YELLES MOHAMMED WALID
+
+
+[![AI-NIDS Tests](https://github.com/walidbenyelles/AI-NIDS/actions/workflows/tests.yml/badge.svg)](https://github.com/walidbenyelles/AI-NIDS/actions/workflows/tests.yml)
